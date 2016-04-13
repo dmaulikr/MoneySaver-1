@@ -13,8 +13,9 @@ class Account: Object {
     
     dynamic var accountName: String = " "
     dynamic var startBalance: Double = 0.0
+    dynamic var acualBalance: Double = 0.0
     dynamic var accountCreationDate: NSDate = NSDate()
-    dynamic var accountCategory: AccountType?
+    dynamic var accountType: AccountType?
     dynamic var accountColor: AccountColor?
     
 // Specify properties to ignore (Realm won't persist these)
