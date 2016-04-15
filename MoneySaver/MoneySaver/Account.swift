@@ -13,7 +13,7 @@ class Account: Object {
     
     dynamic var accountName: String = " "
     dynamic var startBalance: Double = 0.0
-    dynamic var acualBalance: Double = 0.0
+    dynamic var actualBalance: Double = 0.0
     dynamic var accountCreationDate: NSDate = NSDate()
     dynamic var accountType: AccountType?
     dynamic var accountColor: AccountColor?

@@ -24,6 +24,11 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         loadTableViewData()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        let addAccountButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector(addAccountButtonPressed()))
+        self.tabBarController?.navigationItem.rightBarButtonItem = addAccountButton
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -39,15 +44,23 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return accounts.count
     }
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-     let cell = tableView.dequeueReusableCellWithIdentifier("Account", forIndexPath: indexPath) as! AccountTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Account", forIndexPath: indexPath) as! AccountTableViewCell
+        
+        let account = accounts[indexPath.row]
+        
+        cell.accountName.text = account.accountName
+        cell.accountType.text = account.accountType?.name
+        cell.accountBalance.text = "$" + "\(account.actualBalance)"
+        cell.accountIcon.image = UIImage(data: (account.accountType?.icon)!)
+        cell.accountIcon.contentMode = .ScaleAspectFill
+        cell.accountIcon.layer.cornerRadius = 15
+        cell.accountIcon.clipsToBounds = true
      
-     
-     
-     return cell
+        return cell
      }
 
     /*
@@ -59,6 +72,10 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func addAccountButtonPressed() {
+        performSegueWithIdentifier("NewAccount", sender: nil)
+    }
     
     func loadTableViewData() {
         // Fetch Accounts

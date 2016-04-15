@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Slb-72-drL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-998" y="-570"/>
+            <point key="canvasLocation" x="-748" y="-570"/>
         </scene>
         <!--Transaction-->
         <scene sceneID="axB-3f-rxn">
@@ -62,7 +62,7 @@
             </objects>
             <point key="canvasLocation" x="656" y="-49"/>
         </scene>
-        <!--MoneySaver-->
+        <!--Account-->
         <scene sceneID="3qF-Ol-Olc">
             <objects>
                 <viewController id="IV6-Dq-JLS" customClass="AccountViewController" customModule="MoneySaver" customModuleProvider="target" sceneMemberID="viewController">
@@ -121,16 +121,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Account" image="Account Not Selected" selectedImage="Account Selected" id="CNe-wB-Ax3"/>
-                    <navigationItem key="navigationItem" title="MoneySaver" id="L10-Kt-8a5">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="rhv-u3-NmD">
-                            <connections>
-                                <segue destination="CqY-vW-FTE" kind="show" id="ebW-vf-1uu"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="accountTable" destination="Ey6-CO-IEd" id="2oA-d3-Dpx"/>
+                        <segue destination="CqY-vW-FTE" kind="show" identifier="NewAccount" id="nXI-Ty-lAT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evy-NW-hOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -237,23 +231,23 @@
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WyS-Xg-hPd">
                                                     <rect key="frame" x="87.5" y="37" width="30" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="0.55396227689999999" blue="0.41502403840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="1" green="0.35713353512368423" blue="0.41502403839999946" alpha="1" colorSpace="calibratedRGB"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ht3-yQ-87L">
                                                     <rect key="frame" x="291" y="37" width="30" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="0.55396227689999999" blue="0.41502403840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.45703283803696582" green="0.81622132081207166" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWH-9M-cTc">
                                                     <rect key="frame" x="370" y="38" width="30" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="0.55396227689999999" blue="0.41502403840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.79055190251448837" green="0.34414756657849999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XKe-qr-7jR">
                                                     <rect key="frame" x="159" y="37" width="30" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="0.55396227689999999" blue="0.41502403840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.39000822368421051" green="0.55396227689999999" blue="0.41502403839999857" alpha="1" colorSpace="calibratedRGB"/>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gim-rt-onC">
                                                     <rect key="frame" x="225" y="37" width="30" height="30"/>
-                                                    <color key="backgroundColor" red="1" green="0.55396227689999999" blue="0.41502403840000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="1" green="0.848291148542899" blue="0.42399788623234458" alpha="1" colorSpace="calibratedRGB"/>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -267,6 +261,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Account" id="TMx-Oc-fm5">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="18r-rV-xtl"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="26H-8D-VLZ"/>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
@@ -310,8 +305,8 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxU-ci-4Dn">
-                                            <rect key="frame" x="377" y="3" width="25" height="25"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="AxU-ci-4Dn">
+                                            <rect key="frame" x="375" y="6" width="20" height="20"/>
                                         </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
@@ -363,6 +358,7 @@
         <image name="Account Not Selected" width="24" height="24"/>
         <image name="Account Selected" width="24" height="24"/>
         <image name="Cell Arrow" width="14" height="24"/>
+        <image name="Checkmark" width="30" height="18"/>
         <image name="Statistics Not Selected" width="23" height="25"/>
         <image name="Statistics Selected" width="23" height="25"/>
         <image name="Transaction Not Selected" width="26" height="22"/>
