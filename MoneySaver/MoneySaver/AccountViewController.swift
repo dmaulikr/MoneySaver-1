@@ -25,11 +25,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         loadTableViewData()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        let addAccountButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: Selector(addAccountButtonPressed()))
-        self.tabBarController?.navigationItem.rightBarButtonItem = addAccountButton
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -54,10 +49,11 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         cell.accountName.text = account.accountName
         cell.accountType.text = account.accountType?.name
+        
         cell.accountBalance.text = "$" + "\(account.actualBalance)"
         cell.accountIcon.image = UIImage(data: (account.accountType?.icon)!)
-        cell.accountIcon.contentMode = .ScaleAspectFill
-        cell.accountIcon.layer.cornerRadius = 15
+        cell.accountIcon.contentMode = .ScaleAspectFit
+        cell.accountIcon.layer.cornerRadius = 7
         cell.accountIcon.clipsToBounds = true
      
         return cell
@@ -90,6 +86,37 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         for account in accountResults {
             self.accounts += [account]
         }
+
+        
+        let at1 = AccountType()
+        at1.name = "Ahorros"
+        
+        let i1 = UIImage(named: "Debit Card")
+        at1.icon = UIImagePNGRepresentation(i1!)
+        
+        let a1 : Account = Account()
+        a1.accountName = "Santander"
+        a1.startBalance = 0.0
+        a1.actualBalance = 23500
+        a1.accountCreationDate = NSDate()
+        a1.accountType = at1
+        
+        self.accounts.append(a1)
+        
+        let at2 = AccountType()
+        at2.name = "Inversión"
+        
+        let i2 = UIImage(named: "Others")
+        at2.icon = UIImagePNGRepresentation(i2!)
+        
+        let a2 : Account = Account()
+        a2.accountName = "Cartera"
+        a2.startBalance = 0.0
+        a2.actualBalance = 1200
+        a2.accountCreationDate = NSDate()
+        a2.accountType = at2
+        
+        self.accounts.append(a2)
         
         self.accountTable.reloadData()
     }

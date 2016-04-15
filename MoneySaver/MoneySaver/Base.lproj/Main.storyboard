@@ -1,27 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cXt-bY-IYO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="m1N-ag-VRV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="A5L-1x-tn6">
-            <objects>
-                <navigationController id="cXt-bY-IYO" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B79-TI-NTA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="m1N-ag-VRV" kind="relationship" relationship="rootViewController" id="4GN-Xm-iSB"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Slb-72-drL" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-748" y="-570"/>
-        </scene>
         <!--Transaction-->
         <scene sceneID="axB-3f-rxn">
             <objects>
@@ -62,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="656" y="-49"/>
         </scene>
-        <!--Account-->
+        <!--Account View Controller-->
         <scene sceneID="3qF-Ol-Olc">
             <objects>
                 <viewController id="IV6-Dq-JLS" customClass="AccountViewController" customModule="MoneySaver" customModuleProvider="target" sceneMemberID="viewController">
@@ -120,16 +103,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Account" image="Account Not Selected" selectedImage="Account Selected" id="CNe-wB-Ax3"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="BIk-Pr-jkM">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="GYx-j8-weg">
+                            <connections>
+                                <segue destination="CqY-vW-FTE" kind="show" id="g4m-fZ-5vJ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="accountTable" destination="Ey6-CO-IEd" id="2oA-d3-Dpx"/>
-                        <segue destination="CqY-vW-FTE" kind="show" identifier="NewAccount" id="nXI-Ty-lAT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="evy-NW-hOD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="656" y="-1632"/>
+            <point key="canvasLocation" x="1455" y="-1667"/>
         </scene>
         <!--New Account-->
         <scene sceneID="Gnf-39-o9M">
@@ -278,7 +268,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAg-ko-fVs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1369" y="-1632"/>
+            <point key="canvasLocation" x="2017" y="-1667"/>
         </scene>
         <!--Select Type-->
         <scene sceneID="r7d-mh-79Y">
@@ -330,7 +320,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JX8-5P-Dt5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2080" y="-1632"/>
+            <point key="canvasLocation" x="2758" y="-1844"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yug-s8-O7w">
@@ -344,14 +334,33 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="IV6-Dq-JLS" kind="relationship" relationship="viewControllers" id="A7H-39-ytN"/>
+                        <segue destination="4w6-xe-c62" kind="relationship" relationship="viewControllers" id="A7H-39-ytN"/>
                         <segue destination="8cM-Ds-2N6" kind="relationship" relationship="viewControllers" id="Okf-ZZ-ZX9"/>
                         <segue destination="gOk-VR-cmz" kind="relationship" relationship="viewControllers" id="tln-53-OeX"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s4t-UE-5iF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-184" y="-570"/>
+            <point key="canvasLocation" x="-580" y="-650"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="qac-bh-zWD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4w6-xe-c62" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Account" image="Account Not Selected" selectedImage="Account Selected" id="CNe-wB-Ax3"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uTK-OU-4TJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="IV6-Dq-JLS" kind="relationship" relationship="rootViewController" id="VhF-Dp-MDO"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kfq-TX-2Ea" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="829" y="-1667"/>
         </scene>
     </scenes>
     <resources>
