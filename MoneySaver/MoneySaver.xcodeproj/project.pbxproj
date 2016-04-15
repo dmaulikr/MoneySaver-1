@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		152656931CC03FC10061D404 /* NewAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152656921CC03FC10061D404 /* NewAccountTableViewController.swift */; };
+		152656951CC05F980061D404 /* AccountTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 152656941CC05F980061D404 /* AccountTypeTableViewCell.swift */; };
 		1538A79E1CBEBB0700AFBD5D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538A79D1CBEBB0700AFBD5D /* AccountViewController.swift */; };
 		1538A7A01CBEBB2500AFBD5D /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538A79F1CBEBB2500AFBD5D /* TransactionViewController.swift */; };
 		1538A7A21CBEF78B00AFBD5D /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538A7A11CBEF78B00AFBD5D /* AccountTableViewCell.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		152656921CC03FC10061D404 /* NewAccountTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAccountTableViewController.swift; sourceTree = "<group>"; };
+		152656941CC05F980061D404 /* AccountTypeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTypeTableViewCell.swift; sourceTree = "<group>"; };
 		1538A79D1CBEBB0700AFBD5D /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		1538A79F1CBEBB2500AFBD5D /* TransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		1538A7A11CBEF78B00AFBD5D /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
@@ -72,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		152656961CC067830061D404 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1538A7A11CBEF78B00AFBD5D /* AccountTableViewCell.swift */,
+				152656941CC05F980061D404 /* AccountTypeTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		156D4DDB1CBC9608004E222C = {
 			isa = PBXGroup;
 			children = (
@@ -93,10 +106,11 @@
 		156D4DE61CBC9608004E222C /* MoneySaver */ = {
 			isa = PBXGroup;
 			children = (
+				152656961CC067830061D404 /* Cells */,
 				15FEC89E1CBD6DD200C401AE /* Realm Model Classes */,
 				156D4DE71CBC9608004E222C /* AppDelegate.swift */,
 				156D4DEB1CBC9608004E222C /* Main.storyboard */,
-				1538A7A11CBEF78B00AFBD5D /* AccountTableViewCell.swift */,
+				152656921CC03FC10061D404 /* NewAccountTableViewController.swift */,
 				1538A79D1CBEBB0700AFBD5D /* AccountViewController.swift */,
 				1538A79F1CBEBB2500AFBD5D /* TransactionViewController.swift */,
 				156D4DEE1CBC9608004E222C /* Assets.xcassets */,
@@ -208,7 +222,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				156D4DE81CBC9608004E222C /* AppDelegate.swift in Sources */,
+				152656951CC05F980061D404 /* AccountTypeTableViewCell.swift in Sources */,
 				15FEC8991CBD66BB00C401AE /* TransactionCategory.swift in Sources */,
+				152656931CC03FC10061D404 /* NewAccountTableViewController.swift in Sources */,
 				1538A79E1CBEBB0700AFBD5D /* AccountViewController.swift in Sources */,
 				15FEC89D1CBD6CCA00C401AE /* AccountType.swift in Sources */,
 				15FEC8931CBD666800C401AE /* Account.swift in Sources */,

@@ -1,19 +1,19 @@
 //
-//  AccountTableViewCell.swift
+//  AccountTypeTableViewCell.swift
 //  MoneySaver
 //
-//  Created by Alejandro Zamudio Guajardo on 4/13/16.
+//  Created by Alejandro Zamudio Guajardo on 4/14/16.
 //
 //
 
 import UIKit
 
-class AccountTableViewCell: UITableViewCell {
+class AccountTypeTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var accountIcon: UIImageView!
-    @IBOutlet weak var accountName: UILabel!
-    @IBOutlet weak var accountType: UILabel!
-    @IBOutlet weak var accountBalance: UILabel!
+    @IBOutlet weak var accountTypeIcon: UIImageView!
+    @IBOutlet weak var accountTypeName: UILabel!
+    @IBOutlet weak var checkmark: UIImageView!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
