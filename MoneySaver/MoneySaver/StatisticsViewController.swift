@@ -1,14 +1,14 @@
 //
-//  TransactionViewController.swift
+//  StatisticsViewController.swift
 //  MoneySaver
 //
-//  Created by Alejandro Zamudio Guajardo on 4/13/16.
+//  Created by Alejandro Zamudio Guajardo on 4/18/16.
 //
 //
 
 import UIKit
 
-class TransactionViewController: UIViewController {
+class StatisticsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

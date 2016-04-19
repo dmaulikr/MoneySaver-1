@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,82 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UITabBar.appearance().backgroundColor = UIColor(red: 0.3372549, green: 0.54509804, blue: 0.8, alpha: 1.0)
+        loadDefaultAccountTypes()
+        loadDefaultTransactionCategories()
+        
         return true
+    }
+    
+    func loadDefaultAccountTypes() {
+        let realm = try! Realm()
+        let accountTypes = realm.objects(AccountType)
+        
+        if (accountTypes.count == 0) {
+            let accountTypeAsset = AccountType()
+            accountTypeAsset.name = "Asset"
+            accountTypeAsset.icon = UIImageJPEGRepresentation(UIImage(named: "Asset")!, 0.5)
+            
+            let accountTypeCash = AccountType()
+            accountTypeCash.name = "Cash"
+            accountTypeCash.icon = UIImageJPEGRepresentation(UIImage(named: "Cash")!, 0.5)
+            
+            let accountTypeChecking = AccountType()
+            accountTypeChecking.name = "Checking"
+            accountTypeChecking.icon = UIImageJPEGRepresentation(UIImage(named: "Checking")!, 0.5)
+            
+            let accountTypeCreditCard = AccountType()
+            accountTypeCreditCard.name = "Credit Card"
+            accountTypeCreditCard.icon = UIImageJPEGRepresentation(UIImage(named: "Credit Card")!, 0.5)
+            
+            let accountTypeDebitCard = AccountType()
+            accountTypeDebitCard.name = "Debit Card"
+            accountTypeDebitCard.icon = UIImageJPEGRepresentation(UIImage(named: "Debit Card")!, 0.5)
+            
+            let accountTypeInvesting_Retirement = AccountType()
+            accountTypeInvesting_Retirement.name = "Investing/Retirement"
+            accountTypeInvesting_Retirement.icon = UIImageJPEGRepresentation(UIImage(named: "InvestingRetirement")!, 0.5)
+            
+            let accountTypeLoan = AccountType()
+            accountTypeLoan.name = "Loan"
+            accountTypeLoan.icon = UIImageJPEGRepresentation(UIImage(named: "Loan")!, 0.5)
+            
+            let accountTypeOthers = AccountType()
+            accountTypeOthers.name = "Others"
+            accountTypeOthers.icon = UIImageJPEGRepresentation(UIImage(named: "Others")!, 0.5)
+            
+            let accountTypeSavings = AccountType()
+            accountTypeSavings.name = "Savings"
+            accountTypeSavings.icon = UIImageJPEGRepresentation(UIImage(named: "Savings")!, 0.5)
+            
+            try! realm.write {
+                realm.add(accountTypeAsset)
+                realm.add(accountTypeCash)
+                realm.add(accountTypeChecking)
+                realm.add(accountTypeCreditCard)
+                realm.add(accountTypeDebitCard)
+                realm.add(accountTypeInvesting_Retirement)
+                realm.add(accountTypeLoan)
+                realm.add(accountTypeOthers)
+                realm.add(accountTypeSavings)
+            }
+        }
+        else {
+            print("The total quantity of account types is: ", accountTypes.count, "\n")
+        }
+        
+    }
+    
+    func loadDefaultTransactionCategories() {
+        let realm = try! Realm()
+        let transactionCategories = realm.objects(TransactionCategory)
+        
+        if (transactionCategories.count == 0) {
+        }
+        else {
+            // Does nothing.
+        }
     }
 
     func applicationWillResignActive(application: UIApplication) {

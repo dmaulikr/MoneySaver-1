@@ -22,6 +22,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         accountTable.delegate = self
         accountTable.dataSource = self
         
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 0.3372549, green: 0.54509804, blue: 0.8, alpha: 1.0)]
+        
         loadTableViewData()
     }
     
@@ -68,10 +70,6 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         // Pass the selected object to the new view controller.
     }
     */
-    
-    func addAccountButtonPressed() {
-        performSegueWithIdentifier("NewAccount", sender: nil)
-    }
     
     func loadTableViewData() {
         // Fetch Accounts

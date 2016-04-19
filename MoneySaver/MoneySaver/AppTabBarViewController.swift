@@ -1,19 +1,21 @@
 //
-//  TransactionViewController.swift
+//  AppTabBarViewController.swift
 //  MoneySaver
 //
-//  Created by Alejandro Zamudio Guajardo on 4/13/16.
+//  Created by Alejandro Zamudio Guajardo on 4/18/16.
 //
 //
 
 import UIKit
 
-class TransactionViewController: UIViewController {
+class AppTabBarViewController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tabBar.tintColor = UIColor(red: 0.3372549, green: 0.54509804, blue: 0.8, alpha: 1.0)
 
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 0.3372549, green: 0.54509804, blue: 0.8, alpha: 1.0)]
+        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {

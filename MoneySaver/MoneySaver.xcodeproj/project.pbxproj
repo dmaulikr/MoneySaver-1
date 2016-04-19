@@ -12,6 +12,10 @@
 		1538A79E1CBEBB0700AFBD5D /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538A79D1CBEBB0700AFBD5D /* AccountViewController.swift */; };
 		1538A7A01CBEBB2500AFBD5D /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538A79F1CBEBB2500AFBD5D /* TransactionViewController.swift */; };
 		1538A7A21CBEF78B00AFBD5D /* AccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1538A7A11CBEF78B00AFBD5D /* AccountTableViewCell.swift */; };
+		1556B0A71CC5564A00F3AE8E /* AppTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1556B0A61CC5564A00F3AE8E /* AppTabBarViewController.swift */; };
+		1556B0A91CC55CE700F3AE8E /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1556B0A81CC55CE700F3AE8E /* StatisticsViewController.swift */; };
+		1556B0AB1CC58DB300F3AE8E /* SelectAccountTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1556B0AA1CC58DB300F3AE8E /* SelectAccountTypeTableViewController.swift */; };
+		1556B0AD1CC5C3F200F3AE8E /* NewAccountTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1556B0AC1CC5C3F200F3AE8E /* NewAccountTypeTableViewController.swift */; };
 		156D4DE81CBC9608004E222C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156D4DE71CBC9608004E222C /* AppDelegate.swift */; };
 		156D4DED1CBC9608004E222C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 156D4DEB1CBC9608004E222C /* Main.storyboard */; };
 		156D4DEF1CBC9608004E222C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 156D4DEE1CBC9608004E222C /* Assets.xcassets */; };
@@ -48,6 +52,10 @@
 		1538A79D1CBEBB0700AFBD5D /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		1538A79F1CBEBB2500AFBD5D /* TransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		1538A7A11CBEF78B00AFBD5D /* AccountTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountTableViewCell.swift; sourceTree = "<group>"; };
+		1556B0A61CC5564A00F3AE8E /* AppTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTabBarViewController.swift; sourceTree = "<group>"; };
+		1556B0A81CC55CE700F3AE8E /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		1556B0AA1CC58DB300F3AE8E /* SelectAccountTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAccountTypeTableViewController.swift; sourceTree = "<group>"; };
+		1556B0AC1CC5C3F200F3AE8E /* NewAccountTypeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewAccountTypeTableViewController.swift; sourceTree = "<group>"; };
 		156D4DE41CBC9608004E222C /* MoneySaver.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoneySaver.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		156D4DE71CBC9608004E222C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		156D4DEC1CBC9608004E222C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -76,6 +84,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		151873D01CC1C1B900724889 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				152656921CC03FC10061D404 /* NewAccountTableViewController.swift */,
+				1538A79D1CBEBB0700AFBD5D /* AccountViewController.swift */,
+				1538A79F1CBEBB2500AFBD5D /* TransactionViewController.swift */,
+				1556B0A61CC5564A00F3AE8E /* AppTabBarViewController.swift */,
+				1556B0A81CC55CE700F3AE8E /* StatisticsViewController.swift */,
+				1556B0AA1CC58DB300F3AE8E /* SelectAccountTypeTableViewController.swift */,
+				1556B0AC1CC5C3F200F3AE8E /* NewAccountTypeTableViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		152656961CC067830061D404 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -106,13 +128,11 @@
 		156D4DE61CBC9608004E222C /* MoneySaver */ = {
 			isa = PBXGroup;
 			children = (
+				151873D01CC1C1B900724889 /* View Controllers */,
 				152656961CC067830061D404 /* Cells */,
 				15FEC89E1CBD6DD200C401AE /* Realm Model Classes */,
 				156D4DE71CBC9608004E222C /* AppDelegate.swift */,
 				156D4DEB1CBC9608004E222C /* Main.storyboard */,
-				152656921CC03FC10061D404 /* NewAccountTableViewController.swift */,
-				1538A79D1CBEBB0700AFBD5D /* AccountViewController.swift */,
-				1538A79F1CBEBB2500AFBD5D /* TransactionViewController.swift */,
 				156D4DEE1CBC9608004E222C /* Assets.xcassets */,
 				156D4DF01CBC9608004E222C /* LaunchScreen.storyboard */,
 				156D4DF31CBC9608004E222C /* Info.plist */,
@@ -225,13 +245,17 @@
 				152656951CC05F980061D404 /* AccountTypeTableViewCell.swift in Sources */,
 				15FEC8991CBD66BB00C401AE /* TransactionCategory.swift in Sources */,
 				152656931CC03FC10061D404 /* NewAccountTableViewController.swift in Sources */,
+				1556B0A71CC5564A00F3AE8E /* AppTabBarViewController.swift in Sources */,
 				1538A79E1CBEBB0700AFBD5D /* AccountViewController.swift in Sources */,
 				15FEC89D1CBD6CCA00C401AE /* AccountType.swift in Sources */,
 				15FEC8931CBD666800C401AE /* Account.swift in Sources */,
+				1556B0AD1CC5C3F200F3AE8E /* NewAccountTypeTableViewController.swift in Sources */,
 				15FEC8971CBD669000C401AE /* Transaction.swift in Sources */,
 				1538A7A21CBEF78B00AFBD5D /* AccountTableViewCell.swift in Sources */,
 				15FEC89B1CBD6A9C00C401AE /* AccountColor.swift in Sources */,
 				1538A7A01CBEBB2500AFBD5D /* TransactionViewController.swift in Sources */,
+				1556B0A91CC55CE700F3AE8E /* StatisticsViewController.swift in Sources */,
+				1556B0AB1CC58DB300F3AE8E /* SelectAccountTypeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

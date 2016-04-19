@@ -14,7 +14,6 @@ class AccountTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var accountTypeName: UILabel!
     @IBOutlet weak var checkmark: UIImageView!
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
