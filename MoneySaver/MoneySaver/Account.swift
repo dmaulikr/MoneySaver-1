@@ -18,6 +18,10 @@ class Account: Object {
     dynamic var accountType: AccountType?
     dynamic var accountColor: AccountColor?
     
+    override static func primaryKey() -> String? {
+        return "accountName"
+    }
+    
 // Specify properties to ignore (Realm won't persist these)
     
 //  override static func ignoredProperties() -> [String] {

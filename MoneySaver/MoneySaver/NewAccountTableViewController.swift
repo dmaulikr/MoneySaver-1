@@ -8,16 +8,19 @@
 
 import UIKit
 
-class NewAccountTableViewController: UITableViewController {
+class NewAccountTableViewController: UITableViewController, selectAccountType {
     
     @IBOutlet weak var newAccountName: UITextField!
     @IBOutlet weak var newAccountStartBalance: UITextField!
+    @IBOutlet weak var newAccount_AccountTypeName: UILabel!
     @IBOutlet weak var firstAccountColorOption: UIButton!
     @IBOutlet weak var secondAccountColorOption: UIButton!
     @IBOutlet weak var thirdAccountColorOption: UIButton!
     @IBOutlet weak var fourthAccountColorOption: UIButton!
     @IBOutlet weak var fifthAccountColorOption: UIButton!
     @IBOutlet weak var sixthAccountColorOption: UIButton!
+    
+    let newAccount: Account? = Account()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,14 +94,18 @@ class NewAccountTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let nextViewController = segue.destinationViewController as! SelectAccountTypeTableViewController
+        nextViewController.delegate = self
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
 
+    func selectAccountType(accountType: AccountType) {
+        newAccount?.accountType = accountType
+        newAccount_AccountTypeName.text = newAccount?.accountType?.name
+    }
 }

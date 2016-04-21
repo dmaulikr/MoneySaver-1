@@ -14,6 +14,10 @@ class TransactionCategory: Object {
     dynamic var type: String = " "
     dynamic var icon: NSData? = nil
     
+    override static func primaryKey() -> String? {
+        return "name"
+    }
+    
 // Specify properties to ignore (Realm won't persist these)
     
 //  override static func ignoredProperties() -> [String] {

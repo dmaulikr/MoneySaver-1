@@ -7,20 +7,23 @@
 //
 
 import UIKit
+import RealmSwift
+
+protocol selectNewAccountType {
+    func selectNewAccountType()
+}
 
 class NewAccountTypeTableViewController: UITableViewController {
     
     @IBOutlet weak var newAccountTypeName: UITextField!
     @IBOutlet weak var newAccountTypeIcon: UIImageView!
     
+    var delegate: selectNewAccountType? = nil
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
         newAccountTypeIcon.contentMode = .ScaleAspectFit
-        newAccountTypeIcon.layer.cornerRadius = 7
-        newAccountTypeIcon.clipsToBounds = true
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -101,8 +104,50 @@ class NewAccountTypeTableViewController: UITableViewController {
     }
     */
     
-    @IBAction func accountIcon1(sender: UIButton) {
+    @IBAction func setAccountTypeIcon(sender: UIButton) {
         newAccountTypeIcon.image = sender.imageView?.image
     }
 
+    @IBAction func addNewAccountType(sender: AnyObject) {
+        if (newAccountTypeName.text == "") {
+            let alert = UIAlertController(title: "Warning", message: "At least provide a type name.", preferredStyle: .Alert)
+            
+            let action = UIAlertAction(title: "Ok", style: .Cancel)
+            { (alertAction) -> Void in
+                
+            }
+            alert.addAction(action)
+            presentViewController(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            let realm = try! Realm()
+            
+            let newAccountType = AccountType()
+            newAccountType.name = newAccountTypeName.text!
+            newAccountType.icon = UIImageJPEGRepresentation(newAccountTypeIcon.image!, 0.5)
+            
+            do {
+                try realm.write {
+                    realm.add(newAccountType)
+                }
+                
+                delegate?.selectNewAccountType()
+                
+                navigationController?.popViewControllerAnimated(true)
+            }
+            catch {
+                print("Write operation either failed or account type name already exists.")
+                
+                let alert = UIAlertController(title: "Warning", message: "Type name already exists.", preferredStyle: .Alert)
+                
+                let action = UIAlertAction(title: "Ok", style: .Cancel)
+                { (alertAction) -> Void in
+                    
+                }
+                alert.addAction(action)
+                presentViewController(alert, animated: true, completion: nil)
+            }
+        }
+    }
 }

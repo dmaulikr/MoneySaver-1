@@ -161,6 +161,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="MoneySaver" id="BIk-Pr-jkM">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="gd1-1x-qKW"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GYx-j8-weg">
                             <color key="tintColor" red="0.33725490196078434" green="0.54509803921568623" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -206,7 +207,7 @@
                                                     <rect key="frame" x="171" y="7" width="235" height="30"/>
                                                     <color key="textColor" red="0.33725490200000002" green="0.5450980392" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -228,7 +229,7 @@
                                                     <rect key="frame" x="217" y="7" width="189" height="30"/>
                                                     <color key="textColor" red="0.33725490200000002" green="0.5450980392" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -246,8 +247,8 @@
                                                     <color key="textColor" red="0.28235294117647058" green="0.28235294117647058" blue="0.28235294117647058" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Other" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1S-Nw-wyC">
-                                                    <rect key="frame" x="347" y="11" width="44" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Other" textAlignment="right" lineBreakMode="headTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j1S-Nw-wyC">
+                                                    <rect key="frame" x="172" y="11" width="217" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -322,6 +323,7 @@
                         <outlet property="fourthAccountColorOption" destination="gim-rt-onC" id="MEc-A2-jw4"/>
                         <outlet property="newAccountName" destination="4Hd-WY-UhF" id="wWg-Jw-E7O"/>
                         <outlet property="newAccountStartBalance" destination="1W6-g8-Ejs" id="YTQ-HQ-MpV"/>
+                        <outlet property="newAccount_AccountTypeName" destination="j1S-Nw-wyC" id="hMu-wb-Df7"/>
                         <outlet property="secondAccountColorOption" destination="WyS-Xg-hPd" id="uZW-qR-548"/>
                         <outlet property="sixthAccountColorOption" destination="CWH-9M-cTc" id="Kg1-SA-nxB"/>
                         <outlet property="thirdAccountColorOption" destination="XKe-qr-7jR" id="DAZ-uZ-xbL"/>
@@ -375,6 +377,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select Type" id="xdR-5X-Xay">
+                        <barButtonItem key="backBarButtonItem" title="Cancel" id="DxY-Km-mQq"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="uEZ-YL-eDw">
                             <color key="tintColor" red="0.33725490200000002" green="0.5450980392" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -404,63 +407,63 @@
                                     <rect key="frame" x="34" y="16" width="32" height="32"/>
                                     <state key="normal" image="Asset"/>
                                     <connections>
-                                        <action selector="accountIcon1:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="PwP-NA-iBh"/>
+                                        <action selector="setAccountTypeIcon:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="Xt8-xw-QKG"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Diw-ef-RU6">
                                     <rect key="frame" x="34" y="63" width="32" height="32"/>
                                     <state key="normal" image="Loan"/>
                                     <connections>
-                                        <action selector="accountIcon1:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="rQg-of-zdT"/>
+                                        <action selector="setAccountTypeIcon:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="f0Y-nT-dhy"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHj-cK-wQN">
                                     <rect key="frame" x="94" y="63" width="32" height="32"/>
                                     <state key="normal" image="Others"/>
                                     <connections>
-                                        <action selector="accountIcon1:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="xml-eb-B2R"/>
+                                        <action selector="setAccountTypeIcon:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="eqc-tY-sbg"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yCx-xI-tbl">
                                     <rect key="frame" x="156" y="63" width="32" height="32"/>
                                     <state key="normal" image="Savings"/>
                                     <connections>
-                                        <action selector="accountIcon1:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="sDe-pc-gpl"/>
+                                        <action selector="setAccountTypeIcon:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="K1c-bo-c08"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8b-3N-l5p">
                                     <rect key="frame" x="94" y="16" width="32" height="32"/>
                                     <state key="normal" image="Cash"/>
                                     <connections>
-                                        <action selector="accountIcon1:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="A2h-uW-W9z"/>
+                                        <action selector="setAccountTypeIcon:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="b0m-QB-O5z"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sJ-Ki-yK8">
                                     <rect key="frame" x="156" y="16" width="32" height="32"/>
                                     <state key="normal" image="Checking"/>
                                     <connections>
-                                        <action selector="accountIcon1:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="IPS-Lo-yoX"/>
+                                        <action selector="setAccountTypeIcon:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="xbY-0G-dje"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dce-Gd-SGp">
                                     <rect key="frame" x="219" y="16" width="32" height="32"/>
                                     <state key="normal" image="Credit Card"/>
                                     <connections>
-                                        <action selector="accountIcon1:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="NLa-dg-2MG"/>
+                                        <action selector="setAccountTypeIcon:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="Jrj-31-lDr"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dNu-cY-BXc">
                                     <rect key="frame" x="282" y="16" width="32" height="32"/>
                                     <state key="normal" image="Debit Card"/>
                                     <connections>
-                                        <action selector="accountIcon1:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="3Nd-gK-1My"/>
+                                        <action selector="setAccountTypeIcon:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="5Kd-cr-zv3"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yWf-gW-Iyr">
                                     <rect key="frame" x="347" y="16" width="32" height="32"/>
                                     <state key="normal" image="InvestingRetirement"/>
                                     <connections>
-                                        <action selector="accountIcon1:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="EhT-Nj-0Cm"/>
+                                        <action selector="setAccountTypeIcon:" destination="nYw-Lf-3CY" eventType="touchUpInside" id="Jgz-f0-hhX"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -485,7 +488,7 @@
                                                     <rect key="frame" x="171" y="7" width="235" height="30"/>
                                                     <color key="textColor" red="0.33725490200000002" green="0.5450980392" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -521,6 +524,9 @@
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="sIA-Ad-SRc"/>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="fuf-iJ-oTA">
                             <color key="tintColor" red="0.33725490200000002" green="0.5450980392" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="addNewAccountType:" destination="nYw-Lf-3CY" id="PP2-Qf-efm"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>

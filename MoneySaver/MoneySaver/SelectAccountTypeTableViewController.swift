@@ -9,10 +9,16 @@
 import UIKit
 import RealmSwift
 
-class SelectAccountTypeTableViewController: UITableViewController {
+protocol selectAccountType {
+    func selectAccountType(accountType: AccountType)
+}
+
+class SelectAccountTypeTableViewController: UITableViewController, selectNewAccountType {
     
     var accountTypes = [AccountType]()
     var accountTypeIndex: Int = 7
+    var accountTypeCount: Int = 7
+    var delegate: NewAccountTableViewController? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,6 +79,8 @@ class SelectAccountTypeTableViewController: UITableViewController {
             let auxiliarIndexPath = NSIndexPath(forRow: accountTypeIndex, inSection: 0)
             (tableView.cellForRowAtIndexPath(auxiliarIndexPath) as! AccountTypeTableViewCell).checkmark.hidden = true
             accountTypeIndex = indexPath.row
+            delegate?.selectAccountType(accountTypes[accountTypeIndex])
+            navigationController?.popViewControllerAnimated(true)
         }
         else {
             // Does nothing.
@@ -114,15 +122,22 @@ class SelectAccountTypeTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let nextViewController = segue.destinationViewController as! NewAccountTypeTableViewController
+        nextViewController.delegate = self
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
+    func selectNewAccountType() {
+        accountTypeIndex = accountTypeCount
+        loadTableViewData()
+        delegate?.selectAccountType(accountTypes[accountTypeIndex])
+        navigationController?.popViewControllerAnimated(true)
+    }
     
     func loadTableViewData() {
         // Fetch Account Type
@@ -137,6 +152,8 @@ class SelectAccountTypeTableViewController: UITableViewController {
         for accountType in accountTypeResults {
             self.accountTypes += [accountType]
         }
+        
+        accountTypeCount = accountTypes.count
         
         self.tableView.reloadData()
     }
