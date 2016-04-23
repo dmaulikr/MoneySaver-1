@@ -10,13 +10,13 @@ import UIKit
 import RealmSwift
 
 protocol selectAccountType {
-    func selectAccountType(accountType: AccountType)
+    func selectAccountType(accountType: AccountType, withIndex index: Int)
 }
 
 class SelectAccountTypeTableViewController: UITableViewController, selectNewAccountType {
     
     var accountTypes = [AccountType]()
-    var accountTypeIndex: Int = 7
+    var accountTypeIndex: Int!
     var accountTypeCount: Int = 7
     var delegate: NewAccountTableViewController? = nil
 
@@ -79,7 +79,7 @@ class SelectAccountTypeTableViewController: UITableViewController, selectNewAcco
             let auxiliarIndexPath = NSIndexPath(forRow: accountTypeIndex, inSection: 0)
             (tableView.cellForRowAtIndexPath(auxiliarIndexPath) as! AccountTypeTableViewCell).checkmark.hidden = true
             accountTypeIndex = indexPath.row
-            delegate?.selectAccountType(accountTypes[accountTypeIndex])
+            delegate?.selectAccountType(accountTypes[accountTypeIndex], withIndex: accountTypeIndex)
             navigationController?.popViewControllerAnimated(true)
         }
         else {
@@ -135,7 +135,7 @@ class SelectAccountTypeTableViewController: UITableViewController, selectNewAcco
     func selectNewAccountType() {
         accountTypeIndex = accountTypeCount
         loadTableViewData()
-        delegate?.selectAccountType(accountTypes[accountTypeIndex])
+        delegate?.selectAccountType(accountTypes[accountTypeIndex], withIndex: accountTypeIndex)
         navigationController?.popViewControllerAnimated(true)
     }
     

@@ -17,6 +17,7 @@ class Account: Object {
     dynamic var accountCreationDate: NSDate = NSDate()
     dynamic var accountType: AccountType?
     dynamic var accountColor: AccountColor?
+    let accountTransactions = List<Transaction>()
     
     override static func primaryKey() -> String? {
         return "accountName"

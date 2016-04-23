@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, reloadAccountsOnTable {
 
     @IBOutlet weak var accountTable: UITableView!
     
@@ -61,15 +61,17 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
      }
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let nextViewController = segue.destinationViewController as! NewAccountTableViewController
+        nextViewController.delegate = self
     }
-    */
+    
+    func reloadAccountsOnTable() {
+        loadTableViewData()
+    }
     
     func loadTableViewData() {
         // Fetch Accounts

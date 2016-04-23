@@ -14,13 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         UITabBar.appearance().backgroundColor = UIColor(red: 0.3372549, green: 0.54509804, blue: 0.8, alpha: 1.0)
         loadDefaultAccountTypes()
         loadDefaultTransactionCategories()
+        loadDefaultAccountColors()
         
         return true
     }
@@ -92,6 +92,61 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         else {
             // Does nothing.
+        }
+    }
+    
+    func loadDefaultAccountColors() {
+        let realm = try! Realm()
+        let accountColors = realm.objects(AccountColor)
+        
+        if (accountColors.count == 0) {
+            let accountColorOrange = AccountColor()
+            accountColorOrange.red = 1.0
+            accountColorOrange.green = 0.55294118
+            accountColorOrange.blue = 0.41568627
+            accountColorOrange.alpha = 1.0
+            
+            let accountColorRed = AccountColor()
+            accountColorRed.red = 1.0
+            accountColorRed.green = 0.35686275
+            accountColorRed.blue = 0.41568627
+            accountColorRed.alpha = 1.0
+            
+            let accountColorGreen = AccountColor()
+            accountColorGreen.red = 0.38823529
+            accountColorGreen.green = 0.55294118
+            accountColorGreen.blue = 0.41568627
+            accountColorGreen.alpha = 1.0
+            
+            let accountColorYellow = AccountColor()
+            accountColorYellow.red = 1.0
+            accountColorYellow.green = 0.84705882
+            accountColorYellow.blue = 0.42352941
+            accountColorYellow.alpha = 1.0
+            
+            let accountColorBlue = AccountColor()
+            accountColorBlue.red = 0.45882353
+            accountColorBlue.green = 0.81568627
+            accountColorBlue.blue = 1.0
+            accountColorBlue.alpha = 1.0
+            
+            let accountColorPurple = AccountColor()
+            accountColorPurple.red = 0.79215686
+            accountColorPurple.green = 0.34509804
+            accountColorPurple.blue = 1.0
+            accountColorPurple.alpha = 1.0
+            
+            try! realm.write {
+                realm.add(accountColorOrange)
+                realm.add(accountColorRed)
+                realm.add(accountColorGreen)
+                realm.add(accountColorYellow)
+                realm.add(accountColorBlue)
+                realm.add(accountColorPurple)
+            }
+        }
+        else {
+            print("The total quantity of account colors is: ", accountColors.count, "\n")
         }
     }
 

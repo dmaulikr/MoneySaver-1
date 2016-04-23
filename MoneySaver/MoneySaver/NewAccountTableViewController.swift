@@ -7,12 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
 
-class NewAccountTableViewController: UITableViewController, selectAccountType {
+protocol reloadAccountsOnTable {
+    func reloadAccountsOnTable()
+}
+
+class NewAccountTableViewController: UITableViewController, selectAccountType, UITextFieldDelegate {
     
     @IBOutlet weak var newAccountName: UITextField!
     @IBOutlet weak var newAccountStartBalance: UITextField!
     @IBOutlet weak var newAccount_AccountTypeName: UILabel!
+    @IBOutlet weak var newAccountChosenColor: UIView!
     @IBOutlet weak var firstAccountColorOption: UIButton!
     @IBOutlet weak var secondAccountColorOption: UIButton!
     @IBOutlet weak var thirdAccountColorOption: UIButton!
@@ -20,10 +26,29 @@ class NewAccountTableViewController: UITableViewController, selectAccountType {
     @IBOutlet weak var fifthAccountColorOption: UIButton!
     @IBOutlet weak var sixthAccountColorOption: UIButton!
     
+    var accountColors = [AccountColor]()
     let newAccount: Account? = Account()
+    var accountTypeIndex: Int = 7
+    var accountColorIndex: Int = 0
+    var startBalance: Double? = 0.0
+    var delegate: AccountViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        newAccountChosenColor.layer.cornerRadius = 7
+        firstAccountColorOption.layer.cornerRadius = 7
+        secondAccountColorOption.layer.cornerRadius = 7
+        thirdAccountColorOption.layer.cornerRadius = 7
+        fourthAccountColorOption.layer.cornerRadius = 7
+        fifthAccountColorOption.layer.cornerRadius = 7
+        sixthAccountColorOption.layer.cornerRadius = 7
+        
+        newAccountName.delegate = self
+        newAccountStartBalance.delegate = self
+        
+        loadNewAccountDefaultAccountType()
+        loadDefaultAccountColors()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -100,12 +125,108 @@ class NewAccountTableViewController: UITableViewController, selectAccountType {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nextViewController = segue.destinationViewController as! SelectAccountTypeTableViewController
         nextViewController.delegate = self
+        nextViewController.accountTypeIndex = accountTypeIndex
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-
-    func selectAccountType(accountType: AccountType) {
+    
+    func selectAccountType(accountType: AccountType, withIndex index: Int) {
         newAccount?.accountType = accountType
         newAccount_AccountTypeName.text = newAccount?.accountType?.name
+        accountTypeIndex = index
+    }
+    
+    func loadNewAccountDefaultAccountType() {
+        let realm = try! Realm()
+        let defaultAccountType = realm.objects(AccountType).filter("name = 'Others'")
+        newAccount?.accountType = defaultAccountType[0]
+    }
+    
+    func loadDefaultAccountColors() {
+        let realm = try! Realm()
+        let accountColorResults = realm.objects(AccountColor)
+        
+        print("Total account colors ", accountColorResults.count)
+        
+        for accountColor in accountColorResults {
+            accountColors += [accountColor]
+        }
+    }
+    
+    @IBAction func selectColorForNewAccount(sender: UIButton) {
+        if (sender == firstAccountColorOption) {
+            accountColorIndex = 0
+        }
+        else if (sender == secondAccountColorOption) {
+            accountColorIndex = 1
+        }
+        else if (sender == thirdAccountColorOption) {
+            accountColorIndex = 2
+        }
+        else if (sender == fourthAccountColorOption) {
+            accountColorIndex = 3
+        }
+        else if (sender == fifthAccountColorOption) {
+            accountColorIndex = 4
+        }
+        else {
+            accountColorIndex = 5
+        }
+        
+        newAccountChosenColor.backgroundColor = sender.backgroundColor
+    }
+    
+    @IBAction func addNewAccount(sender: AnyObject) {
+        let realm = try! Realm()
+        
+        newAccount?.accountName = newAccountName.text!
+        newAccount?.startBalance = startBalance!
+        newAccount?.actualBalance = startBalance!
+        newAccount?.accountCreationDate = NSDate()
+        newAccount?.accountColor = accountColors[accountColorIndex]
+        
+        try! realm.write {
+            realm.add(newAccount!)
+        }
+        
+        delegate?.loadTableViewData()
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if (textField == newAccountName) {
+            // Does nothing.
+        }
+        else {
+            newAccountStartBalance.text = "\(startBalance!)"
+        }
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        if (textField == newAccountName) {
+            // Does nothing.
+        }
+        else {
+            startBalance = Double(newAccountStartBalance.text!)!
+            
+            if (startBalance != nil) {
+                newAccountStartBalance.text = "$" + "\(startBalance!)"
+            }
+            else {
+                newAccountStartBalance.text = "$0.0"
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if (textField == newAccountName) {
+            newAccountStartBalance.becomeFirstResponder()
+        }
+        else {
+            newAccountStartBalance.resignFirstResponder()
+        }
+        
+        return true
     }
 }
