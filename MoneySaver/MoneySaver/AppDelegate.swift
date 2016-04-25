@@ -89,9 +89,171 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let transactionCategories = realm.objects(TransactionCategory)
         
         if (transactionCategories.count == 0) {
+            
+            // Incomes
+            let transactionCategoryBonus = TransactionCategory()
+            transactionCategoryBonus.name = "Bonus"
+            transactionCategoryBonus.type = "Income"
+            
+            let transactionCategoryOthers = TransactionCategory()
+            transactionCategoryOthers.name = "Others"
+            transactionCategoryOthers.type = "Income"
+            
+            let transactionCategorySalary = TransactionCategory()
+            transactionCategorySalary.name = "Salary"
+            transactionCategorySalary.type = "Income"
+            
+            let transactionCategorySavingsDeposit = TransactionCategory()
+            transactionCategorySavingsDeposit.name = "Savings Deposit"
+            transactionCategorySavingsDeposit.type = "Income"
+            
+            let transactionCategoryTaxRefund = TransactionCategory()
+            transactionCategoryTaxRefund.name = "Tax Refund"
+            transactionCategoryTaxRefund.type = "Income"
+            
+            
+            // Expenses
+            let transactionCategoryGas = TransactionCategory()
+            transactionCategoryGas.name = "Gas"
+            transactionCategoryGas.type = "Expense"
+            
+            let transactionCategoryBankCharge = TransactionCategory()
+            transactionCategoryBankCharge.name = "Bank Charge"
+            transactionCategoryBankCharge.type = "Expense"
+            
+            let transactionCategoryCash = TransactionCategory()
+            transactionCategoryCash.name = "Cash"
+            transactionCategoryCash.type = "Expense"
+            
+            let transactionCategoryCharity = TransactionCategory()
+            transactionCategoryCharity.name = "Charity"
+            transactionCategoryCharity.type = "Expense"
+            
+            let transactionCategoryChildcare = TransactionCategory()
+            transactionCategoryChildcare.name = "Childcare"
+            transactionCategoryChildcare.type = "Expense"
+            
+            let transactionCategoryClothing = TransactionCategory()
+            transactionCategoryClothing.name = "Clothing"
+            transactionCategoryClothing.type = "Expense"
+            
+            let transactionCategoryCreditCardPayment = TransactionCategory()
+            transactionCategoryCreditCardPayment.name = "Credit Card Payment"
+            transactionCategoryCreditCardPayment.type = "Expense"
+            
+            let transactionCategoryEatingOut = TransactionCategory()
+            transactionCategoryEatingOut.name = "Eating Out"
+            transactionCategoryEatingOut.type = "Expense"
+            
+            let transactionCategoryEducation = TransactionCategory()
+            transactionCategoryEducation.name = "Education"
+            transactionCategoryEducation.type = "Expense"
+            
+            let transactionCategoryEntertainment = TransactionCategory()
+            transactionCategoryEntertainment.name = "Entertainment"
+            transactionCategoryEntertainment.type = "Expense"
+            
+            let transactionCategoryGifts = TransactionCategory()
+            transactionCategoryGifts.name = "Gifts"
+            transactionCategoryGifts.type = "Expense"
+            
+            let transactionCategoryGroceries = TransactionCategory()
+            transactionCategoryGroceries.name = "Groceries"
+            transactionCategoryGroceries.type = "Expense"
+            
+            let transactionCategoryHealthAndFitness = TransactionCategory()
+            transactionCategoryHealthAndFitness.name = "Health & Fitness"
+            transactionCategoryHealthAndFitness.type = "Expense"
+            
+            let transactionCategoryHomeRepair = TransactionCategory()
+            transactionCategoryHomeRepair.name = "Home Repair"
+            transactionCategoryHomeRepair.type = "Expense"
+            
+            let transactionCategoryHousehold = TransactionCategory()
+            transactionCategoryHousehold.name = "Household"
+            transactionCategoryHousehold.type = "Expense"
+            
+            let transactionCategoryInsurance = TransactionCategory()
+            transactionCategoryInsurance.name = "Insurance"
+            transactionCategoryInsurance.type = "Expense"
+            
+            let transactionCategoryLoan = TransactionCategory()
+            transactionCategoryLoan.name = "Loan"
+            transactionCategoryLoan.type = "Expense"
+            
+            let transactionCategoryMedical = TransactionCategory()
+            transactionCategoryMedical.name = "Medical"
+            transactionCategoryMedical.type = "Expense"
+            
+            let transactionCategoryMortgagePayment = TransactionCategory()
+            transactionCategoryMortgagePayment.name = "Mortgage Payment"
+            transactionCategoryMortgagePayment.type = "Expense"
+            
+            let transactionCategoryOthers2 = TransactionCategory()
+            transactionCategoryOthers2.name = "Others"
+            transactionCategoryOthers2.type = "Expense"
+            
+            let transactionCategoryPets = TransactionCategory()
+            transactionCategoryPets.name = "Pets"
+            transactionCategoryPets.type = "Expense"
+            
+            let transactionCategoryRent = TransactionCategory()
+            transactionCategoryRent.name = "Rent"
+            transactionCategoryRent.type = "Expense"
+            
+            let transactionCategoryTax = TransactionCategory()
+            transactionCategoryTax.name = "Tax"
+            transactionCategoryTax.type = "Expense"
+            
+            let transactionCategoryTransport = TransactionCategory()
+            transactionCategoryTransport.name = "Transport"
+            transactionCategoryTransport.type = "Expense"
+            
+            let transactionCategoryTravel = TransactionCategory()
+            transactionCategoryTravel.name = "Travel"
+            transactionCategoryTravel.type = "Expense"
+            
+            let transactionCategoryUtilities = TransactionCategory()
+            transactionCategoryUtilities.name = "Utilities"
+            transactionCategoryUtilities.type = "Expense"
+            
+            try! realm.write {
+                realm.add(transactionCategoryBonus)
+                realm.add(transactionCategoryOthers)
+                realm.add(transactionCategorySalary)
+                realm.add(transactionCategorySavingsDeposit)
+                realm.add(transactionCategoryTaxRefund)
+                
+                realm.add(transactionCategoryGas)
+                realm.add(transactionCategoryBankCharge)
+                realm.add(transactionCategoryCash)
+                realm.add(transactionCategoryCharity)
+                realm.add(transactionCategoryChildcare)
+                realm.add(transactionCategoryClothing)
+                realm.add(transactionCategoryCreditCardPayment)
+                realm.add(transactionCategoryEatingOut)
+                realm.add(transactionCategoryEducation)
+                realm.add(transactionCategoryEntertainment)
+                realm.add(transactionCategoryGifts)
+                realm.add(transactionCategoryGroceries)
+                realm.add(transactionCategoryHealthAndFitness)
+                realm.add(transactionCategoryHomeRepair)
+                realm.add(transactionCategoryHousehold)
+                realm.add(transactionCategoryInsurance)
+                realm.add(transactionCategoryLoan)
+                realm.add(transactionCategoryMedical)
+                realm.add(transactionCategoryMortgagePayment)
+                realm.add(transactionCategoryOthers2)
+                realm.add(transactionCategoryPets)
+                realm.add(transactionCategoryRent)
+                realm.add(transactionCategoryTax)
+                realm.add(transactionCategoryTransport)
+                realm.add(transactionCategoryTravel)
+                realm.add(transactionCategoryUtilities)
+            }
         }
         else {
-            // Does nothing.
+            print("The total quantity of transaction categories is: ", transactionCategories.count, "\n")
         }
     }
     

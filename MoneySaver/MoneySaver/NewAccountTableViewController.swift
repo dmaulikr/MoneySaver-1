@@ -9,10 +9,6 @@
 import UIKit
 import RealmSwift
 
-protocol reloadAccountsOnTable {
-    func reloadAccountsOnTable()
-}
-
 class NewAccountTableViewController: UITableViewController, selectAccountType, UITextFieldDelegate {
     
     @IBOutlet weak var newAccountName: UITextField!
