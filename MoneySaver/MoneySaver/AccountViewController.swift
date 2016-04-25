@@ -27,6 +27,10 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         loadTableViewData()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        self.loadTableViewData()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
