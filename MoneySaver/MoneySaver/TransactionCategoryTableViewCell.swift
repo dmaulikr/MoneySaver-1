@@ -12,6 +12,7 @@ class TransactionCategoryTableViewCell: UITableViewCell {
     
     @IBOutlet weak var transactionCategoryName: UILabel!
     @IBOutlet weak var checkmark: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

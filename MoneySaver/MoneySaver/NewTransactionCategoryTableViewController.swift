@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import RealmSwift
+
+protocol selectNewTransactionCategory {
+    func selectNewTransactionCategory()
+}
 
 class NewTransactionCategoryTableViewController: UITableViewController {
     
     @IBOutlet weak var newTransactionCategoryName: UITextField!
+    var typeOfTransaction: String!
+    
+    var delegate: SelectTransactionCategoryTableViewController? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +102,31 @@ class NewTransactionCategoryTableViewController: UITableViewController {
     }
     */
     
-    @IBOutlet weak var addNewTransactionCategory: UIBarButtonItem!
+    @IBAction func addNewTransactionCategory(sender: AnyObject) {
+        if (newTransactionCategoryName.text == "") {
+            let alert = UIAlertController(title: "Warning", message: "At least provide a category name.", preferredStyle: .Alert)
+            
+            let action = UIAlertAction(title: "Ok", style: .Cancel)
+            { (alertAction) -> Void in
+                
+            }
+            alert.addAction(action)
+            presentViewController(alert, animated: true, completion: nil)
+        }
+        else {
+            let realm = try! Realm()
+            
+            let newTransactionCategory = TransactionCategory()
+            newTransactionCategory.name = newTransactionCategoryName.text!
+            newTransactionCategory.type = typeOfTransaction
+            
+            try! realm.write {
+                realm.add(newTransactionCategory)
+            }
+            
+            delegate?.selectNewTransactionCategory()
+            navigationController?.popViewControllerAnimated(true)
+        }
+    }
 
 }

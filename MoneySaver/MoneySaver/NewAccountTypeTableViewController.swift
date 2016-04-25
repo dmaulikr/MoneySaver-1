@@ -18,7 +18,7 @@ class NewAccountTypeTableViewController: UITableViewController {
     @IBOutlet weak var newAccountTypeName: UITextField!
     @IBOutlet weak var newAccountTypeIcon: UIImageView!
     
-    var delegate: selectNewAccountType? = nil
+    var delegate: SelectAccountTypeTableViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()

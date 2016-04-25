@@ -7,11 +7,22 @@
 //
 
 import UIKit
+import RealmSwift
+
+protocol selectTransactionAccount {
+    func selectTransactionAccount(transactionAccount: Account, withIndex index: Int)
+}
 
 class SelectTransactionAccountTableViewController: UITableViewController {
+    
+    var transactionAccounts = [Account]()
+    var transactionAccountIndex: Int!
+    var delegate: NewTransactionTableViewController? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        loadTableViewData()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -29,23 +40,46 @@ class SelectTransactionAccountTableViewController: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return transactionAccounts.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("SelectableAccount", forIndexPath: indexPath) as! RelatedAccountTableViewCell
 
-        // Configure the cell...
+        let transactionAccount = transactionAccounts[indexPath.row]
+        
+        cell.relatedAccountName.text = transactionAccount.accountName
+        
+        if (indexPath.row == transactionAccountIndex) {
+            cell.checkmark.hidden = false
+        }
+        else {
+            cell.checkmark.hidden = true
+        }
 
         return cell
     }
-    */
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("Transaction Account was selected")
+        
+        if ((tableView.cellForRowAtIndexPath(indexPath) as! RelatedAccountTableViewCell).checkmark.hidden) {
+            (tableView.cellForRowAtIndexPath(indexPath) as! RelatedAccountTableViewCell).checkmark.hidden = false
+            
+            transactionAccountIndex = indexPath.row
+            
+            delegate?.selectTransactionAccount(transactionAccounts[transactionAccountIndex], withIndex: transactionAccountIndex)
+            navigationController?.popViewControllerAnimated(true)
+        }
+        else {
+            // Does nothing.
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -91,5 +125,26 @@ class SelectTransactionAccountTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    
+    func loadTableViewData() {
+        // Fetch Accounts
+        
+        let realm = try! Realm()
+        let transactionAccountResults = realm.objects(Account)
+        
+        print("Total transaction accounts ", transactionAccountResults.count)
+        
+        self.transactionAccounts.removeAll()
+        
+        for transactionAccount in transactionAccountResults {
+            self.transactionAccounts += [transactionAccount]
+        }
+        
+        self.tableView.reloadData()
+    }
+    
+    func reloadTableViewData() {
+        print("Reloading data.")
+        loadTableViewData()
+    }
 }

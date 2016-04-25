@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class NewTransactionTableViewController: UITableViewController, UITextFieldDelegate {
+class NewTransactionTableViewController: UITableViewController, UITextFieldDelegate, selectTransactionCategory, selectTransactionAccount {
     
     @IBOutlet weak var newTransactionPayee: UITextField!
     @IBOutlet weak var newTransactionAmount: UITextField!
@@ -64,7 +64,6 @@ class NewTransactionTableViewController: UITableViewController, UITextFieldDeleg
             dateFormatter.timeStyle = .NoStyle
             dateFormatter.dateStyle = .MediumStyle
             
-            print(dateFormatter.stringFromDate(NSDate()))
             return dateFormatter.stringFromDate(NSDate())
         }
         else {
@@ -138,21 +137,47 @@ class NewTransactionTableViewController: UITableViewController, UITextFieldDeleg
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "SelectCategory") {
+            let nextViewController = segue.destinationViewController as! SelectTransactionCategoryTableViewController
+            nextViewController.delegate = self
+            nextViewController.transactionCategoryIndex = transactionCategoryIndex
+            nextViewController.typeOfTransaction = typeOfTransaction
+        }
+        else {
+            let nextViewController = segue.destinationViewController as! SelectTransactionAccountTableViewController
+            nextViewController.delegate = self
+            nextViewController.transactionAccountIndex = transactionRelatedAccountIndex
+        }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     
     @IBAction func changeTransactionType(sender: UISegmentedControl) {
+        transactionCategoryIndex = 0
+        
         if (sender.selectedSegmentIndex == 0) {
             sender.tintColor = greenColor
-            typeOfTransaction = "Expense"
+            typeOfTransaction = "Income"
         }
         else {
             sender.tintColor = redColor
-            typeOfTransaction = "Income"
+            typeOfTransaction = "Expense"
         }
         
         loadNewTransactionDefaultTransactionCategory()
+    }
+    
+    func selectTransactionCategory(transactionCategory: TransactionCategory, withIndex index: Int) {
+        newTransaction?.category = transactionCategory
+        newTransaction_TransactionCategoryName.text = newTransaction?.category?.name
+        transactionCategoryIndex = index
+    }
+    
+    func selectTransactionAccount(transactionAccount: Account, withIndex index: Int) {
+        newTransaction?.account = transactionAccount
+        newTransactionRelatedAccountName.text = newTransaction?.account?.accountName
+        transactionRelatedAccountIndex = index
     }
     
     func loadNewTransactionDefaultTransactionCategory() {
@@ -179,6 +204,34 @@ class NewTransactionTableViewController: UITableViewController, UITextFieldDeleg
     }
     
     @IBAction func addNewTransaction(sender: AnyObject) {
+        let realm = try! Realm()
+        
+        newTransaction?.payee = newTransactionPayee.text!
+        newTransaction?.typeOfTransaction = typeOfTransaction
+        newTransaction?.quantity = amount!
+        newTransaction?.date = NSDate()
+        
+        try! realm.write {
+            realm.add(newTransaction!)
+        }
+        
+        try! realm.write {
+            newTransaction?.account?.accountTransactions.append(newTransaction!)
+            
+            if (typeOfTransaction == "Income") {
+                print("Income")
+                let newActualBalance = (newTransaction?.account?.actualBalance)! + (newTransaction?.quantity)!
+                newTransaction?.account?.actualBalance = newActualBalance
+            }
+            else {
+                print("Expense")
+                let newActualBalance = (newTransaction?.account?.actualBalance)! - (newTransaction?.quantity)!
+                newTransaction?.account?.actualBalance = newActualBalance
+            }
+        }
+        
+        delegate?.loadTableViewData()
+        navigationController?.popViewControllerAnimated(true)
     }
 
     func textFieldDidBeginEditing(textField: UITextField) {

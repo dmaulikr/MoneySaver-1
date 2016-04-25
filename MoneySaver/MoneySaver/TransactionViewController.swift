@@ -16,12 +16,13 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     var transactions = [Transaction]()
     var transactionIndex: Int = 0
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         transactionTable.delegate = self
         transactionTable.dataSource = self
+        
+        loadTableViewData()
 
         navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 0.3372549, green: 0.54509804, blue: 0.8, alpha: 1.0)]
     }
@@ -44,7 +45,7 @@ class TransactionViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Account", forIndexPath: indexPath) as! TransactionTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("Transaction", forIndexPath: indexPath) as! TransactionTableViewCell
         
         let transaction = transactions[indexPath.row]
         

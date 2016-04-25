@@ -75,9 +75,13 @@ class SelectAccountTypeTableViewController: UITableViewController, selectNewAcco
         print("Account Type was selected.")
         
         if ((tableView.cellForRowAtIndexPath(indexPath) as! AccountTypeTableViewCell).checkmark.hidden) {
+            
             (tableView.cellForRowAtIndexPath(indexPath) as! AccountTypeTableViewCell).checkmark.hidden = false
+            
             let auxiliarIndexPath = NSIndexPath(forRow: accountTypeIndex, inSection: 0)
+            
             (tableView.cellForRowAtIndexPath(auxiliarIndexPath) as! AccountTypeTableViewCell).checkmark.hidden = true
+            
             accountTypeIndex = indexPath.row
             delegate?.selectAccountType(accountTypes[accountTypeIndex], withIndex: accountTypeIndex)
             navigationController?.popViewControllerAnimated(true)

@@ -12,7 +12,7 @@ import RealmSwift
 class Transaction: Object {
     dynamic var payee: String = " "
     dynamic var typeOfTransaction: String = " "
-    dynamic var quantity: Float = 0.0
+    dynamic var quantity: Double = 0.0
     dynamic var category: TransactionCategory?
     dynamic var account: Account?
     dynamic var date: NSDate = NSDate()
